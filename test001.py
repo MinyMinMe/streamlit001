@@ -1,10 +1,6 @@
 from openai import OpenAI
 import streamlit as st
 
-## Load Config, 환경 설정 API를 가지고 온다.
-from dotenv import load_dotenv, find_dotenv
-load_dotenv(find_dotenv(), override=True)
-
 ## 제목 표시
 st.title("ChatGPT Clone 001")
 
