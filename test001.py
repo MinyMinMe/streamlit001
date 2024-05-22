@@ -5,8 +5,8 @@ from langchain_core.output_parsers import StrOutputParser
 from langchain_core.prompts import PromptTemplate
 
 ## Load Config
-from dotenv import load_dotenv, find_dotenv
-load_dotenv(find_dotenv(), override=True)
+#from dotenv import load_dotenv, find_dotenv
+#load_dotenv(find_dotenv(), override=True)
 
 st.set_page_config(page_title="🦜🔗 내 맘대로 생성기 ")
 st.title('🦜🔗 뭘 막 만들어보자.')
