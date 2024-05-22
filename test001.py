@@ -39,10 +39,10 @@ def generate_response(pkgName, PkgDescription, From, To):
 with st.form('myform'):
   
   #입력폼 생성
-  pkgName = st.text_input('상품명:', '으라차차 패키지')
-  PkgDescription = st.text_input('상품특징:', '소상공인을 위한 맞춤형 결합 통신상품, 홍보+AI로봇+경영관리+고객관리 서비스를 제공')
-  From = st.text_input('발송 대상:', 'KT직원')
-  To = st.text_input('수신 대상:', '새로 오픈한 식당 사장님')
+  pkgName = st.text_input('상품명:', placeholder='으라차차 패키지')
+  PkgDescription = st.text_input('상품특징:', placeholder='소상공인을 위한 맞춤형 결합 통신상품, 홍보+AI로봇+경영관리+고객관리 서비스를 제공')
+  From = st.text_input('발송 대상:', placeholder='KT직원')
+  To = st.text_input('수신 대상:', placeholder='새로 오픈한 식당 사장님')
   
   #전송 버튼 생성
   submitted = st.form_submit_button('생성하기')
