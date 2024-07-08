@@ -57,9 +57,6 @@ with st.form('myform'):
     else:
         st.session_state.reset = False
     
-#전송 버튼 생성
-submitted = st.form_submit_button('생성하기')
-  
-# 전송 버튼이 눌러졌다면 답변 생성
-if submitted:
+    # 전송 버튼이 눌러졌다면 답변 생성
+    if st.form_submit_button('생성하기')
     st.markdown(generate_response(pkgName,"","",""))
