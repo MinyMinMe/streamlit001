@@ -44,7 +44,6 @@ def reset_fields():
     st.session_state.reset = True
 
 with st.form('myform'):
-  
     pkgName = st.text_input('상품명:', value='' if st.session_state.reset else '으라차차 패키지')
     PkgDescription = st.text_input('상품특징:', value='' if st.session_state.reset else '소상공인을 위한 맞춤형 결합 통신상품, 홍보+AI로봇+경영관리+고객관리 서비스를 제공')
     From = st.text_input('발송 대상:', value='' if st.session_state.reset else 'KT직원')
@@ -59,4 +58,5 @@ with st.form('myform'):
     
     # 전송 버튼이 눌러졌다면 답변 생성
     if st.form_submit_button('생성하기'):
-        st.markdown(generate_response(pkgName,"","",""))
+        response = generate_response(pkgName, PkgDescription, From, To)
+        st.markdown(response)
