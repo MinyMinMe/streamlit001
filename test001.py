@@ -9,7 +9,7 @@ from langchain_core.prompts import PromptTemplate
 #load_dotenv(find_dotenv(), override=True)
 
 st.set_page_config(page_title="🦜🔗 내 맘대로 생성기 ")
-st.title('🦜🔗 뭘 막 만들어보자.')
+st.title('🦜🔗 Adlib - 홍보 문자 생성기')
 
 def generate_response(pkgName, PkgDescription, From, To):
     system_message = """
@@ -36,17 +36,30 @@ def generate_response(pkgName, PkgDescription, From, To):
         "To": To
     })
 
+# Session state to keep track of input values
+if 'reset' not in st.session_state:
+    st.session_state.reset = False
+
+def reset_fields():
+    st.session_state.reset = True
+
 with st.form('myform'):
   
-  #입력폼 생성
-  pkgName = st.text_input('상품명:', placeholder='으라차차 패키지')
-  PkgDescription = st.text_input('상품특징:', placeholder='소상공인을 위한 맞춤형 결합 통신상품, 홍보+AI로봇+경영관리+고객관리 서비스를 제공')
-  From = st.text_input('발송 대상:', placeholder='KT직원')
-  To = st.text_input('수신 대상:', placeholder='새로 오픈한 식당 사장님')
+    pkgName = st.text_input('상품명:', value='' if st.session_state.reset else '으라차차 패키지')
+    PkgDescription = st.text_input('상품특징:', value='' if st.session_state.reset else '소상공인을 위한 맞춤형 결합 통신상품, 홍보+AI로봇+경영관리+고객관리 서비스를 제공')
+    From = st.text_input('발송 대상:', value='' if st.session_state.reset else 'KT직원')
+    To = st.text_input('수신 대상:', value='' if st.session_state.reset else '새로 오픈한 식당 사장님')
+
+    # Reset 버튼
+    if st.button('Reset'):
+        reset_fields()
+        st.experimental_rerun()
+    else:
+        st.session_state.reset = False
+    
+    #전송 버튼 생성
+    submitted = st.form_submit_button('생성하기')
   
-  #전송 버튼 생성
-  submitted = st.form_submit_button('생성하기')
-  
-  # 전송 버튼이 눌러졌다면 답변 생성
-  if submitted:
-    st.markdown(generate_response(pkgName,"","",""))
+    # 전송 버튼이 눌러졌다면 답변 생성
+    if submitted:
+        st.markdown(generate_response(pkgName,"","",""))
